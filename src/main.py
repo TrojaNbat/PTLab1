@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import argparse
 import sys
+import os
 
 from CalcRating import CalcRating
 from TextDataReader import TextDataReader
+from YAMLDataReader import YAMLDataReader
 
 
 def get_path_from_arguments(args) -> str:
@@ -16,12 +18,19 @@ def get_path_from_arguments(args) -> str:
 
 def main():
     path = get_path_from_arguments(sys.argv[1:])
-    reader = TextDataReader()
-    students = reader.read(path)
-    print("Students: ", students)
+    file_extension = os.path.splitext(path)[1]
 
-    rating = CalcRating(students).calc()
-    print("Rating: ", rating)
+    if file_extension == '.txt':
+        reader = TextDataReader()
+        students = reader.read(path)
+        print("Students: ", students)
+
+        rating = CalcRating(students).calc()
+        print("Rating: ", rating)
+    else:
+        yamlReader = YAMLDataReader()
+        yamlData = yamlReader.read(path)
+        print("YAML: ", yamlData)
 
 
 if __name__ == "__main__":
