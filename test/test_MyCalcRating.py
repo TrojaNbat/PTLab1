@@ -18,5 +18,4 @@ class TestMyCalcRating:
                                                         ('химия', 97),
                                                         ('социология', 91)]}
 
-
         return data, excellent_students
