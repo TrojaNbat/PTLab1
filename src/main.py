@@ -6,6 +6,7 @@ import os
 from CalcRating import CalcRating
 from TextDataReader import TextDataReader
 from YAMLDataReader import YAMLDataReader
+from MyCalcRating import MyCalcRating
 
 
 def get_path_from_arguments(args) -> str:
@@ -31,6 +32,10 @@ def main():
         yamlReader = YAMLDataReader()
         yamlData = yamlReader.read(path)
         print("YAML: ", yamlData)
+
+        excellent_students = MyCalcRating(yamlData).excellentStudents()
+        print("Количество студентовотличников (имеющих баллы по всем "
+              f"предметам ≥ 90) = {excellent_students}")
 
 
 if __name__ == "__main__":
