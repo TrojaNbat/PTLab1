@@ -5,6 +5,7 @@ from Types import DataType
 def getScores(student) -> list:
     items = student[1]
     scores = [score for score in items if score[1] >= 90]
+    print(scores)
     return scores
 
 
